@@ -40,7 +40,7 @@ const computeResponse = classEvents => {
   }, 'Voici tes cours : ');
 };
 
-app.post('/', async (req, res) => {
+app.post('/messenger', async (req, res) => {
   let response = {};
   const intentName = req.body.queryResult.intent.displayName;
 
@@ -48,7 +48,7 @@ app.post('/', async (req, res) => {
     response = {
       fulfillmentText: "Hello",
     }
-  } else if (intentName === 'askPlanning') {
+  } else if (intentName === 'cours') {
     const date = req.body.queryResult.parameters.date.substring(0, 10).replace(/-/g, '/');
     const url = computeUrl(date);
 
