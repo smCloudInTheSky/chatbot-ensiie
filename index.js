@@ -34,14 +34,22 @@ app.get('/health', (req, res) => {
 app.post('/messenger', (req,res) => {
   let response = {};
   const intentName = req.body.queryResult.intent.displayName;
-
   if (intentName === 'cours') {
+    test = axios({
+      method: 'post',
+      url: 'https://www.iiens.net/etudiants/edt/json_services/events.php',
+      data: {
+        year: '2018',
+        month: '/11',
+        day: '16-',
+        promo: '3-'
+      });
+    })
     response = {
       fulfillmentText: "ESSAIE PAS DE SÉCHER JE TE VOIS",
     }
   }
-
-  res.json(response);
+  res.json(test);
 });
 
 let port = process.env.PORT;
