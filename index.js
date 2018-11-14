@@ -31,8 +31,17 @@ app.get('/health', (req, res) => {
   res.send('health')
 });
 
-app.get('/cours', (req,res) => {
-  res.send('CC')
+app.post('/messenger', (req,res) => {
+  let response = {};
+  const intentName = req.body.queryResult.intent.displayName;
+
+  if (intentName === 'cours') {
+    response = {
+      fulfillmentText: "ESSAIE PAS DE SÉCHER JE TE VOIS",
+    }
+  }
+
+  res.json(response);
 });
 
 let port = process.env.PORT;
