@@ -31,6 +31,10 @@ app.get('/health', (req, res) => {
   res.send('health')
 });
 
+app.get('/cours', (req,res) => {
+  res.send('CC')
+});
+
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 8000;
